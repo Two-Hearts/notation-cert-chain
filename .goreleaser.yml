@@ -1,0 +1,26 @@
+builds:
+  - main: .
+    id: notation-cert-chain
+    binary: notation-cert-chain
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ignore:
+      - goos: windows
+        goarch: arm64
+archives:
+  - format: tar.gz
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - LICENSE
+release:
+  draft: true
+  prerelease: auto
